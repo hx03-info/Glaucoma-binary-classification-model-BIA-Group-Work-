@@ -10,7 +10,6 @@ from sklearn.metrics import (
 )
 
 def extract_img_features(path):
-    """Extract image features (color/center/texture)"""
     try:
         img = cv2.imread(path)
         if img is None: return None
@@ -38,22 +37,21 @@ def extract_img_features(path):
 
 def evaluate_xgb(
     model_path: str,
-    base_path: str,
+    val_dir: str,  
     csv_path: str
 ):
     df = pd.read_csv(csv_path)
-    folder_map = {0: 'Glaucoma_Negative', 1: 'Glaucoma_Positive'}
-    val_root = os.path.join(base_path, 'Validation')
-    
+    folder_map = {0: 'Glaucoma_Negative', 1: 'Glaucoma_Positive'}    
     data_list, labels = [], []
     for _, row in tqdm(df.iterrows(), total=len(df), desc="Extracting features"):
-        img_path = os.path.join(val_root, folder_map[row['Glaucoma']], row['Filename'])
+        img_path = os.path.join(val_dir, folder_map[row['Glaucoma']], row['Filename'])
         if os.path.exists(img_path):
             feats = extract_img_features(img_path)
             if feats:
                 data_list.append(feats)
                 labels.append(row['Glaucoma'])
 
+    # Model inference
     X_test = pd.DataFrame(data_list)
     y_test = np.array(labels)
     print(f"✅ Loaded {len(X_test)} valid samples (Negative: {np.sum(y_test==0)}, Positive: {np.sum(y_test==1)})")
@@ -79,7 +77,7 @@ def evaluate_xgb(
         "confusion_matrix": {"TP": int(tp), "TN": int(tn), "FP": int(fp), "FN": int(fn)}
     }
 
-
+    # Print results
     print("\n" + "="*50)
     print("XGBOOST (IMAGE ONLY) - VALIDATION SET METRICS")
     print("="*50)
@@ -89,7 +87,7 @@ def evaluate_xgb(
     print(f"AUROC Score                  : {metrics['auroc']:.4f}")
     print(f"AUPRC Score                  : {metrics['auprc']:.4f}")
     
-
+    # Formatted confusion matrix
     print("\n" + "-"*50)
     print("XGBoost Confusion Matrix (TN, FP, FN, TP)")
     print("-"*50)
@@ -100,3 +98,4 @@ def evaluate_xgb(
     print("="*50 + "\n")
 
     return metrics
+
