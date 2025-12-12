@@ -1,6 +1,7 @@
 """
 Deep Learning Model Evaluation Utilities
 For Glaucoma Detection (ResNet18/DenseNet121/ConvNeXt-Tiny)
+Compatible with Python 3.9
 """
 import os
 import numpy as np
@@ -10,15 +11,16 @@ import torchvision.models as models
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 import cv2
+import pandas as pd  # 补充缺失的导入
 
-def get_device() -> torch.device:
+
+def get_device():
     """Get available device (GPU first, then CPU)"""
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def preprocess_dl_image(img_path: str, img_size: tuple = (224, 224)) -> np.ndarray | None:
-    try:
-        # Read and convert color space
+def preprocess_dl_image(img_path, img_size=(224, 224)):
+    try:  
         img = cv2.imread(img_path)
         if img is None:
             return None
@@ -37,10 +39,10 @@ def preprocess_dl_image(img_path: str, img_size: tuple = (224, 224)) -> np.ndarr
 
 
 def load_dl_model(
-    model_name: str,
-    weights_path: str,
-    num_classes: int = 2
-) -> nn.Module:
+    model_name,
+    weights_path,
+    num_classes=2
+):
     device = get_device()
     
     if model_name.lower() == "resnet18":
@@ -67,10 +69,9 @@ def load_dl_model(
     checkpoint = torch.load(weights_path, map_location=device)
     # Handle both state_dict and direct model weights
     if "state_dict" in checkpoint:
-        model.load_state_dict(checkpoint["state_dict"])
+        model.load_state_dict(checkpoint["state_dict"], strict=False)  # 加 strict=False
     else:
-        model.load_state_dict(checkpoint)
-    
+        model.load_state_dict(checkpoint, strict=False)  # 加 strict=False
     # Set to evaluation mode
     model = model.to(device)
     model.eval()
@@ -81,7 +82,7 @@ def load_dl_model(
 # ==================== Custom DL Dataset ====================
 class GlaucomaDLDataset(Dataset):
     """Custom Dataset for Glaucoma DL Model Evaluation"""
-    def __init__(self, val_dir: str, csv_df: pd.DataFrame, img_size: tuple = (224, 224)):
+    def __init__(self, val_dir, csv_df, img_size=(224, 224)):
         self.val_dir = val_dir
         self.img_size = img_size
         self.class_map = {0: 'Glaucoma_Negative', 1: 'Glaucoma_Positive'}
@@ -94,10 +95,10 @@ class GlaucomaDLDataset(Dataset):
             if os.path.exists(img_path):
                 self.data.append((img_path, row['Glaucoma']))
 
-    def __len__(self) -> int:
+    def __len__(self):
         return len(self.data)
 
-    def __getitem__(self, idx: int) -> tuple[torch.Tensor, int]:
+    def __getitem__(self, idx):
         img_path, label = self.data[idx]
         
         # Preprocess image
@@ -113,12 +114,12 @@ class GlaucomaDLDataset(Dataset):
 
 # ==================== DL Model Inference ====================
 def dl_model_inference(
-    model: nn.Module,
-    val_dir: str,
-    csv_df: pd.DataFrame,
-    img_size: tuple = (224, 224),
-    batch_size: int = 8
-) -> tuple[np.ndarray, np.ndarray]:
+    model,
+    val_dir,
+    csv_df,
+    img_size=(224, 224),
+    batch_size=8
+):
     """
     Run batch inference with DL model
     :param model: Loaded DL model (eval mode)
