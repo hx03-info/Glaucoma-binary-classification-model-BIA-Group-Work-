@@ -28,14 +28,14 @@ conda activate glaucoma
 ### Install dependency
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 Note:
 - PyTorch 2.8.0 is required
 - CPU and Apple Silicon (MPS) are supported
 - CUDA is optional
 
-## 2️⃣ Download Models Weights
+## 2️⃣ Download Models Weights and Validation Dataset
 
 The folder for model weights is available here: https://drive.google.com/drive/folders/1fHm6mKsTe-DfgcYsIVzJlOzfAhN7mF-J?usp=sharing
 
