@@ -12,6 +12,6 @@
 conda create -n glaucoma python=3.9
 conda activate glaucoma
 
-# OR using venv
-python -m venv glaucoma_env
-source glaucoma_env/bin/activate
+qqq
+```
+qqqq
