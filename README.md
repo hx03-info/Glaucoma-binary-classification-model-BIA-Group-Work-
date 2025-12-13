@@ -42,7 +42,9 @@ The folder for model weights is available here: https://drive.google.com/drive/f
 
 ## 3️⃣ Running Evaluations
 
-Always run main.py from the repository root directory.
+Always run **`main.py`** from the repository root directory.
+
+### Only-image Evaluation
 
 ```bash
 python main.py \
@@ -50,4 +52,30 @@ python main.py \
   --weights_dir "/path/to/weights" \
   --model resnet18
 ```
+
 Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
+
+### Enable ExpCDR Integration (Optional)
+
+```bash
+python main.py \
+  --val_dir "/path/to/Validation" \
+  --weights_dir "/path/to/weights" \
+  --model resnet18 \
+  --integrated
+```
+The script will automatically use **`glaucoma.csv`** in the repository root.
+Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
+
+## 4️⃣ Outputs
+
+The script prints:
+• Device information (CPU / MPS / CUDA)
+• Dataset statistics
+• Classification report
+• Summary metrics: Accuracy, AUROC, AUPRC
+Evaluation curves are saved to the **`ICA/ folder.`**
+
+
+
+
