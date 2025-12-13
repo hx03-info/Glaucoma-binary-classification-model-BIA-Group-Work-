@@ -50,11 +50,4 @@ python main.py \
   --weights_dir "/path/to/weights" \
   --model resnet18
 ```
-Supported models: 
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">resnet18</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">densenet</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">convnext</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">mobilenet</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">rf</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">svm</span>,
-<span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 12px; font-size: 0.9em; margin-right: 6px;">xgb</span>
+Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
