@@ -19,7 +19,6 @@ cd Glaucoma-binary-classification-model-BIA-Group-Work-
 ### Create and activate a virtual environment
 
 ```bash
-# Using conda
 conda create -n glaucoma python=3.9
 conda activate glaucoma
 ```
