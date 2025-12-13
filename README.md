@@ -79,7 +79,7 @@ The script prints:
 - Classification report
 - Summary metrics: Accuracy, AUROC, AUPRC
 
-Evaluation curves are saved to the **`ICA/ folder.`**
+Evaluation curves are saved to the **`ICA/`** folder.
 
 
 
