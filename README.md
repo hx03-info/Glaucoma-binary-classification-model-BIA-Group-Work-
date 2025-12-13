@@ -65,6 +65,7 @@ python main.py \
   --integrated
 ```
 The script will automatically use **`glaucoma.csv`** in the repository root.
+
 Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
 
 ## 4️⃣ Outputs
@@ -75,7 +76,6 @@ The script prints:
 - Dataset statistics
 - Classification report
 - Summary metrics: Accuracy, AUROC, AUPRC
-- 
 Evaluation curves are saved to the **`ICA/ folder.`**
 
 
