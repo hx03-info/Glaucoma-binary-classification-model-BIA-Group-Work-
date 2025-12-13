@@ -41,6 +41,9 @@ The folder for model weights is available here: https://drive.google.com/drive/f
 The folder of validation dataset is available here: https://drive.google.com/drive/folders/1tbyHar2ekyJpfD4YxICrvmgEJ3DZzT19?usp=sharing
 
 
+#### Note:
+After downloading, use the path to the entire folder as the input to **`--val_dir`** and **`--weights_dir`**. For example, if you downloaded the validation dataset to **`C:/Users/YourName/Validation`**, then **`--val_dir`**  should point to that folder **`"C:/Users/YourName/Validation"`**.
+
 
 ## 3️⃣ Running Evaluations
 
@@ -49,10 +52,7 @@ Always run **`main.py`** from the repository root directory.
 ### Only-image Evaluation
 
 ```bash
-python main.py \
-  --val_dir "/path/to/Validation" \
-  --weights_dir "/path/to/weights" \
-  --model resnet18
+python main.py --val_dir "/path/to/Validation" --weights_dir "/path/to/weights" --model resnet18
 ```
 
 Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
@@ -60,11 +60,7 @@ Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`*
 ### Enable ExpCDR Integration (Optional)
 
 ```bash
-python main.py \
-  --val_dir "/path/to/Validation" \
-  --weights_dir "/path/to/weights" \
-  --model resnet18 \
-  --integrated
+python main.py --val_dir "/path/to/Validation" --weights_dir "/path/to/weights" --model resnet18 --integrated
 ```
 The script will automatically use **`glaucoma.csv`** in the repository root.
 
