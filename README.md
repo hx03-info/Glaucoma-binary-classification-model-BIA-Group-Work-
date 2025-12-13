@@ -70,10 +70,12 @@ Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`*
 ## 4️⃣ Outputs
 
 The script prints:
-• Device information (CPU / MPS / CUDA)
-• Dataset statistics
-• Classification report
-• Summary metrics: Accuracy, AUROC, AUPRC
+
+- Device information (CPU / MPS / CUDA)
+- Dataset statistics
+- Classification report
+- Summary metrics: Accuracy, AUROC, AUPRC
+- 
 Evaluation curves are saved to the **`ICA/ folder.`**
 
 
