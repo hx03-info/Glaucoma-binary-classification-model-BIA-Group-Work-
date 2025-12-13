@@ -39,6 +39,9 @@ Note:
 
 The folder for model weights is available here: https://drive.google.com/drive/folders/1fHm6mKsTe-DfgcYsIVzJlOzfAhN7mF-J?usp=sharing
 
+The folder of validation dataset is available here: https://drive.google.com/drive/folders/1tbyHar2ekyJpfD4YxICrvmgEJ3DZzT19?usp=sharing
+
+
 
 ## 3️⃣ Running Evaluations
 
