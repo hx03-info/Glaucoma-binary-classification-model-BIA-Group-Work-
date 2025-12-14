@@ -1,0 +1,8 @@
+Contribution
+Zihang He: Contributed to the Methods and Results section of the report, and model development.
+Zhiyuan Zhu: Contributed to the Methods section and GitHub Readme and model development.
+Xinyang Du: Contributed to the Methods and Results section of the Report, and model development.
+Haoxiang Xia: Managed code integration and edit Github scripts and Results section.
+Yishu Deng: Drafted the Introduction section of the report.
+Yichen Huang: Drafted the Discussion section of the report.
+Yuang He: Contributed to the Methods section of the report.
