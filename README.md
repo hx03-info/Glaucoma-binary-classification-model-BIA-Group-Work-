@@ -66,7 +66,7 @@ The script will automatically use **`glaucoma.csv`** in the repository root.
 
 Supported models: **`resnet18`**, **`densenet`**, **`convnext`**, **`mobilenet`**, **`rf`**, **`svm`**, **`xgb`**
 
-## 4️⃣ Outputs
+### Outputs
 
 The script prints:
 
@@ -77,6 +77,26 @@ The script prints:
 
 Evaluation curves are saved to the **`ICA/`** folder.
 
+
+
+## 4️⃣ Multi-model Prediction
+
+Run the **`all.py`** from the the repository root directory.
+
+```bash
+python all.py --expcdr 0.4803 --image_path "path/to/image" --weights_dir "path/to/weights"
+```
+
+For example, **`--image_path`** is the path of image in validation dataset, such as **`"/your path /Validation/Glaucoma_Negative/483.jpg".`**
+
+
+### Outputs
+
+The scripts prints:
+
+- Model Name
+- Probability of positive one (0-1)
+- Prediction (negative:<0.35, uncertain:0.35-0.65, positive:>0.65)
 
 
 
