@@ -5,6 +5,8 @@ It supports deep learning models (ResNet18, DenseNet, ConvNeXt, MobileNet) and t
 
 All evaluations can be run via the CLI script `main.py`.
 
+Muti-Model prediction in **`all.py`**.
+
 ---
 
 ## 1️⃣ Clone the repository and Environment Setup
